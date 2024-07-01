@@ -1,0 +1,49 @@
+.nome-desenvolvedor {
+    color: gray;
+    font-size: small;
+}
+
+.img-icon-face {
+    width: 100px;
+    height: 100px;
+}
+
+.div-search {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+mat-toolbar-row {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+mat-toolbar {
+    flex-direction: row;
+}
+
+.div-cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.example-card {
+    max-width: 250px;
+    max-height: 800px;
+    margin: 0px 10px;
+  }
+
+  .img-card {
+    max-height: 140px;
+  }
+
+
+  
+  .example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  }

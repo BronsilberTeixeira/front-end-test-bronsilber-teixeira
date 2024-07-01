@@ -1,3 +1,25 @@
-<div class="container">
-    
-</div>
+<ng-container>
+    <mat-toolbar>
+        <img src="../assets/images/icon-face.png" class="img-icon-face">
+        <mat-toolbar-row class="div-textos-topbar">
+            <h2>Teste de Desenvolvedor Front-end - Anota AI</h2>
+            <h6 class="nome-desenvolvedor">-- Bronsilber Teixeira Santos -------------</h6>
+        </mat-toolbar-row>
+    </mat-toolbar>
+    <form class="div-search">
+        <mat-form-field style="width: 45%;" class="example-full-width">
+            <input matInput placeholder="Pesquise por um titulo">
+        </mat-form-field>
+    </form>
+
+    <div class="div-cards">
+        <mat-card *ngFor="let card of cards" class="example-card" appearance="outlined">
+            <span class="badge bg-danger badge-dot"></span>
+            <img mat-card-image class="img-card" src="{{ card.img }}">
+            <mat-card-content style="height: 100%;">
+                <mat-card-title>{{card.title}}</mat-card-title>
+                <p matTooltip="{{ card.description }}">{{ card.description | truncate:250 }}</p>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</ng-container>
