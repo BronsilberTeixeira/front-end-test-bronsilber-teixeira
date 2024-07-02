@@ -11,9 +11,16 @@
 .div-search {
     width: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
     margin-top: 2rem;
+}
+
+.botao-refresh {
+    height: 56px;
+    border:  1px solid #b0b0b0;
+    background-color: #0C9EFF;
+    margin-left: 4%;
+    border-radius: 5px;
 }
 
 mat-toolbar-row {
@@ -39,11 +46,64 @@ mat-toolbar {
 
   .img-card {
     max-height: 140px;
+    position: static;
+    border-radius: 10px 10px 0 0;
   }
 
 
-  
-  .example-header-image {
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-    background-size: cover;
+  .badge-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+
+  .badge-icon {
+    background-color: white;
+    border-radius: 100%;
+    font-size: 24px;
+    border-color: transparent;
+    z-index: 1;
+    right: -5%;
+    top: -3%;
+    transition: all 0.6s;
+  }
+
+  .badge-icon:hover {
+    transform: rotate(180deg);
+    color: white;
+    border-color: black;
+    background-color: red;
+  }
+
+  .tipo-container{
+    top: 50px;
+  }
+  .type {
+    position: absolute;
+    top: 30%;
+    right: 3%;
+    background-color: #dfdfdf;
+    border-radius: 5px;
+    font-size: 11px;
+    padding: 3px;
+    color: #ffffff;
+  }
+
+  .paisagem {
+    background-color: #0C9EFF;
+  }
+  .paisagem::before {
+    content: "Paisagem";
+  }
+  .flor {
+    background-color: #ff0048;
+  }
+  .flor::before {
+    content: "Flor";
+  }
+  .pizza {
+    background-color: #928c00;
+  }
+  .pizza::before {
+    content: "Pizza";
   }

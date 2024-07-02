@@ -1,16 +1,9 @@
-import { HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
-import { MatCardModule } from '@angular/material/card';
-import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
-import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { CommonModule } from '@angular/common';
 import { Card } from './models/card';
 import { Service } from './services/service';
 import { SharedModule } from './shared/shared/shared.module';
-import { TruncatePipe } from './shared/truncate.pipe';
 
 @Component({
   selector: 'app-root',
@@ -24,6 +17,7 @@ export class AppComponent implements OnInit {
   title = 'front-end-test-bronsilber-teixeira';
 
   public cards: Card[] = [];
+  public filtro: string = '';
 
   constructor(private service: Service) {}
 
@@ -33,6 +27,26 @@ export class AppComponent implements OnInit {
 
   buscarTodosCards() {
     this.service.listarItens().subscribe(res => this.cards = res);
+  }
+
+  filtrar(event: any) {
+    let filtro = event.target.value
+    let filtrado: Card[] = [];
+    if(filtro == "") {
+      this.buscarTodosCards();
+      return
+    }
+    filtrado = this.cards.filter((card)=>{
+      return(
+        card.title.toLocaleLowerCase().indexOf(filtro.toLocaleLowerCase()) > -1 || 
+        card.description.toLocaleLowerCase().indexOf(filtro.toLocaleLowerCase()) > -1
+      )
+    });
+    this.cards = filtrado;
+  }
+
+  excluirCard(index: number) {
+    this.cards.splice(index, 1)
   }
 }
 

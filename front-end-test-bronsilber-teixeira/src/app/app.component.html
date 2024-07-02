@@ -8,14 +8,22 @@
     </mat-toolbar>
     <form class="div-search">
         <mat-form-field style="width: 45%;" class="example-full-width">
-            <input matInput placeholder="Pesquise por um titulo">
+            <input type="text" (keyup)="filtrar($event)" matInput placeholder="Pesquise por um titulo">
         </mat-form-field>
+        <button (click)="buscarTodosCards()" mat-fab class="botao-refresh"><mat-icon>refresh</mat-icon></button>
     </form>
 
     <div class="div-cards">
-        <mat-card *ngFor="let card of cards" class="example-card" appearance="outlined">
-            <span class="badge bg-danger badge-dot"></span>
+        <mat-card *ngFor="let card of cards; let i = index" class="example-card" appearance="outlined">
+            <div class="badge-container">
+                <mat-icon matTooltip="Excluir Card" (click)="excluirCard(i)" matBadgeColor="accent" class="badge-icon">close</mat-icon>
+            </div>
             <img mat-card-image class="img-card" src="{{ card.img }}">
+            <span  [ngClass]="{
+                paisagem: card.type == '1',
+                flor: card.type == '2',
+                pizza: card.type == '3'
+              }" class="type"></span>
             <mat-card-content style="height: 100%;">
                 <mat-card-title>{{card.title}}</mat-card-title>
                 <p matTooltip="{{ card.description }}">{{ card.description | truncate:250 }}</p>
